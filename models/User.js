@@ -25,6 +25,14 @@ const UserSchema = new mongoose.Schema({
             }
         },
     },
+    credit: {
+        type: Number,
+        default: 0,
+    },
+    cash: {
+        type: Number,
+        default: 0,
+    },
     created: {
         type: Date,
         default: Date.now(),
