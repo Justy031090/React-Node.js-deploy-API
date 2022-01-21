@@ -1,11 +1,13 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const User = () => {
     const [user, setUser] = useState({});
+    const [err, setErr] = useState('');
     const params = useParams();
-    const { cash, credit, firstName, lastName, created, email } = user;
+    const navigate = useNavigate();
+    const { cash, credit, firstName, lastName, created, email, _id } = user;
     useEffect(() => {
         const getData = async () => {
             try {
@@ -16,7 +18,6 @@ const User = () => {
                 };
                 const res = await axios.get(
                     `http://localhost:5000/api/users/${params.id}`,
-
                     config
                 );
                 setUser(res.data);
@@ -28,6 +29,15 @@ const User = () => {
             getData();
         }
     }, [params.id, user]);
+
+    const deleteUser = async () => {
+        try {
+            await axios.delete(`http://localhost:5000/api/users/${params.id}`);
+            navigate('/api/users');
+        } catch (e) {
+            setErr(e.response);
+        }
+    };
     const render = () => {
         return (
             <div className="container">
@@ -38,10 +48,23 @@ const User = () => {
                 <span>Credit: {credit}</span>
                 <span>Cash: {cash}</span>
                 <span>Member Since: {created}</span>
+                <div className="user-btn">
+                    <button onClick={(e) => deleteUser()}>Delete User</button>
+                    <button
+                        onClick={(e) => navigate(`/api/users/update/${_id}`)}
+                    >
+                        Change Details
+                    </button>
+                </div>
             </div>
         );
     };
-    return <Fragment>{user && render()}</Fragment>;
+    return (
+        <div className="container">
+            {user && render()}
+            {err && <h2 style={{ color: 'red' }}> {err}</h2>}
+        </div>
+    );
 };
 
 export default User;

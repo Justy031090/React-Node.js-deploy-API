@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 .form {
     display: flex;
@@ -17,9 +18,21 @@ button {
     color: #f25f24;
     border: #f25f24 solid 1px;
 }
+button:hover {
+    cursor: pointer;
+    background-color: #f25f24;
+    color: #f6f6f6;
+}
 h2 {
     margin-bottom: 0.3rem;
 }
 .main-btn {
     font-size: 2.5rem;
+}
+.user-btn {
+    display: flex;
+}
+input {
+    margin: 0.5rem;
+    width: 300px;
 }
