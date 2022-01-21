@@ -44,8 +44,9 @@ router.patch('/transfer', async (req, res) => {
             return res
                 .status(400)
                 .send("You can't transfer more than you got..");
-        giverCash = fromUser.cash - amount;
-        gainerCash = toUser.cash + amount;
+
+        giverCash = fromUser.cash - Number(amount);
+        gainerCash = toUser.cash + Number(amount);
         await fromUser.update({ cash: giverCash });
         await toUser.update({ cash: gainerCash });
         res.status(200).send('Succesfully transfered');
