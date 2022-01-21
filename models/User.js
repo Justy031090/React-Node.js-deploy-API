@@ -25,15 +25,6 @@ const UserSchema = new mongoose.Schema({
             }
         },
     },
-    password: {
-        type: String,
-        required: true,
-        validate(value) {
-            if (validator.isLength(value, { min: 6, max: 12 })) {
-                throw Error('Password must be between 6-12 characters');
-            }
-        },
-    },
     created: {
         type: Date,
         default: Date.now(),
