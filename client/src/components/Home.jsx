@@ -17,7 +17,13 @@ const Home = () => {
                     className="main-btn"
                     onClick={(e) => navigate(`/api/users/`)}
                 >
-                    Users
+                    Watch Users
+                </button>
+                <button
+                    className="main-btn"
+                    onClick={(e) => navigate(`/api/users/create`)}
+                >
+                    Add Users
                 </button>
             </div>
         </Fragment>

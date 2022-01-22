@@ -7,6 +7,7 @@ import NotFound from './components/NotFound';
 import Users from './components/Users';
 import User from './components/User';
 import Update from './components/Update';
+import CreateUser from './components/CreateUser';
 function App() {
     return (
         <Router>
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/api/user/:id" element={<User />} />
                 <Route path="/api/users/transfer" element={<Transfer />} />
                 <Route path="/api/users/update/:id" element={<Update />} />
+                <Route path="/api/users/create" element={<CreateUser />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
