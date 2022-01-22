@@ -16,10 +16,7 @@ const User = () => {
                         'Content-Type': 'application/json',
                     },
                 };
-                const res = await axios.get(
-                    `http://localhost:5000/api/users/${params.id}`,
-                    config
-                );
+                const res = await axios.get(`/api/users/${params.id}`, config);
                 setUser(res.data);
             } catch (e) {
                 console.log(e.response);

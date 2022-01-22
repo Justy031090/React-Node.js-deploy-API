@@ -36,3 +36,8 @@ input {
     margin: 0.5rem;
     width: 300px;
 }
+.not-found {
+    font-size: 3rem;
+    color: red;
+    font-weight: bold;
+}

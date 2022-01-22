@@ -23,11 +23,7 @@ const Transfer = () => {
                 },
             };
             const body = transfer;
-            const res = await axios.patch(
-                'http://localhost:5000/api/users/transfer',
-                body,
-                config
-            );
+            const res = await axios.patch('/api/users/transfer', body, config);
             console.log(res);
         } catch (e) {
             console.log(e.response);

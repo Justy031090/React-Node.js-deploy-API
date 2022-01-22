@@ -27,11 +27,7 @@ const CreateUser = () => {
                 },
             };
             const body = create;
-            const res = await axios.post(
-                `http://localhost:5000/api/users/`,
-                body,
-                config
-            );
+            const res = await axios.post(`/api/users/`, body, config);
             console.log(res.data);
             setMsg('User Created');
         } catch (e) {

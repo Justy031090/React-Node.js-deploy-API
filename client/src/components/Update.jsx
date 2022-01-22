@@ -37,7 +37,7 @@ const Update = () => {
             };
             const body = update;
             const res = await axios.patch(
-                `http://localhost:5000/api/users/${params.id}`,
+                `/api/users/${params.id}`,
                 body,
                 config
             );
