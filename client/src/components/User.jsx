@@ -29,7 +29,7 @@ const User = () => {
 
     const deleteUser = async () => {
         try {
-            await axios.delete(`http://localhost:5000/api/users/${params.id}`);
+            await axios.delete(`/api/users/${params.id}`);
             navigate('/api/users');
         } catch (e) {
             setErr(e.response);
