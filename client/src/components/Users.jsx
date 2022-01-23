@@ -32,7 +32,7 @@ const Users = () => {
                     <h2>User:</h2>
                     <span>First Name: {user.firstName}</span>
                     <span>Last Name: {user.lastName}</span>
-                    <button onClick={(e) => navigate(`/api/user/${user._id}`)}>
+                    <button onClick={(e) => navigate(`/user/${user._id}`)}>
                         Check
                     </button>
                 </div>

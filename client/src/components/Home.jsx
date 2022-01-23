@@ -8,20 +8,20 @@ const Home = () => {
             <div className="container">
                 <button
                     className="main-btn"
-                    onClick={(e) => navigate(`/api/users/transfer`)}
+                    onClick={(e) => navigate(`/users/transfer`)}
                 >
                     {' '}
                     Transfer
                 </button>
                 <button
                     className="main-btn"
-                    onClick={(e) => navigate(`/api/users/`)}
+                    onClick={(e) => navigate(`/users/`)}
                 >
                     Watch Users
                 </button>
                 <button
                     className="main-btn"
-                    onClick={(e) => navigate(`/api/users/create`)}
+                    onClick={(e) => navigate(`/users/create`)}
                 >
                     Add Users
                 </button>

@@ -26,12 +26,12 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li style={styleLI}>
-                    <Link style={styleLI} to="api/users">
+                    <Link style={styleLI} to="/users">
                         Users
                     </Link>
                 </li>
                 <li style={styleLI}>
-                    <Link style={styleLI} to="api/users/transfer">
+                    <Link style={styleLI} to="/users/transfer">
                         Transfer
                     </Link>
                 </li>

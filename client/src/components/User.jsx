@@ -47,9 +47,7 @@ const User = () => {
                 <span>Member Since: {created}</span>
                 <div className="user-btn">
                     <button onClick={(e) => deleteUser()}>Delete User</button>
-                    <button
-                        onClick={(e) => navigate(`/api/users/update/${_id}`)}
-                    >
+                    <button onClick={(e) => navigate(`/users/update/${_id}`)}>
                         Change Details
                     </button>
                 </div>
