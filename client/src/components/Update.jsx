@@ -27,9 +27,9 @@ const Update = () => {
         e.preventDefault();
         setErr('');
         setMsg('');
-        if (!firstName && !lastName && !credit && !cash)
-            return setErr('Must fill at least one field');
         try {
+            if (!firstName && !lastName && !credit && !cash)
+                return setErr('Must fill at least one field');
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
