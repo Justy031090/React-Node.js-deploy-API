@@ -14,11 +14,11 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/api/users" element={<Users />} />
-                <Route path="/api/user/:id" element={<User />} />
-                <Route path="/api/users/transfer" element={<Transfer />} />
-                <Route path="/api/users/update/:id" element={<Update />} />
-                <Route path="/api/users/create" element={<CreateUser />} />
+                <Route path="/users" element={<Users />} />
+                <Route path="/user/:id" element={<User />} />
+                <Route path="/users/transfer" element={<Transfer />} />
+                <Route path="/users/update/:id" element={<Update />} />
+                <Route path="/users/create" element={<CreateUser />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>

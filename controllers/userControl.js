@@ -74,10 +74,9 @@ const updateUser = async (req, res) => {
     if (!isValid) return res.status(400).send('Cannot update specified fields');
 
     try {
-        let user = await User.findByIdAndUpdate(id, req.body, {
-            new: true,
-            runValidators: true,
-        });
+        let user = await User.findById(id);
+        updates.forEach((update) => (user[update] = req.body[update]));
+        await user.save();
         res.status(200).send(user);
     } catch (e) {
         res.status(400).send('User not found');
