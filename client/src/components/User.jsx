@@ -7,7 +7,7 @@ const User = () => {
     const [err, setErr] = useState('');
     const params = useParams();
     const navigate = useNavigate();
-    const { cash, credit, firstName, lastName, created, email, _id } = user;
+    const { cash, credit, firstName, lastName, created, email, id } = user;
     useEffect(() => {
         const getData = async () => {
             try {
@@ -48,7 +48,7 @@ const User = () => {
                 <div className="user-btn">
                     <button onClick={(e) => deleteUser()}>Delete User</button>
                     <button
-                        onClick={(e) => navigate(`/api/users/update/${_id}`)}
+                        onClick={(e) => navigate(`/api/users/update/${id}`)}
                     >
                         Change Details
                     </button>
