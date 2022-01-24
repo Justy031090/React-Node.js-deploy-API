@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongoose.Schema({
     firstName: {
@@ -37,6 +39,28 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
+    password: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 6,
+    },
+});
+
+UserSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!user) throw Error('Unable to log in');
+    if (!isMatch) throw Error('Unable to log in');
+    return user;
+};
+
+UserSchema.pre('save', async function (next) {
+    const user = this;
+    if (user.isModified('password')) {
+        user.password = await bcrypt.hash(user.password, 10);
+    }
+    next();
 });
 
 module.exports = User = mongoose.model('user', UserSchema);

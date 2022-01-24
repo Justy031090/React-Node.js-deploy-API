@@ -10,7 +10,7 @@ const getUsers = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-    const { email, firstName, lastName } = req.body;
+    const { email, firstName, lastName, password } = req.body;
     try {
         let user = await User.findOne({ email });
         if (user) return res.status(400).send('User already exists');
@@ -18,6 +18,7 @@ const createUser = async (req, res) => {
             firstName,
             lastName,
             email,
+            password,
         });
         await user.save();
         return res.status(201).send('Succesfully Created');
@@ -69,7 +70,13 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req, res) => {
     const { id } = req.params;
     const updates = Object.keys(req.body);
-    const allowedUpdates = ['firstName', 'lastName', 'credit', 'cash'];
+    const allowedUpdates = [
+        'firstName',
+        'lastName',
+        'credit',
+        'cash',
+        'password',
+    ];
     const isValid = updates.every((update) => allowedUpdates.includes(update));
     if (!isValid) return res.status(400).send('Cannot update specified fields');
 
@@ -83,6 +90,16 @@ const updateUser = async (req, res) => {
     }
 };
 
+const login = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findByCredentials(email, password);
+        res.send(user);
+    } catch (e) {
+        res.status(400).send();
+    }
+};
+
 module.exports = {
     getUsers,
     createUser,
@@ -90,4 +107,5 @@ module.exports = {
     getUser,
     deleteUser,
     updateUser,
+    login,
 };
